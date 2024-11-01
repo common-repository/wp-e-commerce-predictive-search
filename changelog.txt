@@ -1,0 +1,254 @@
+*** WP e-Commerce Predictive Search Pro Changelog ***
+
+= 2.2.0 - 2017/06/15 =
+* Tweak - Tested for compatibility with WordPress major version 4.8.0
+* Tweak - Tested for compatibility with WPEC major version 3.12.2
+* Tweak - WordPress Translation activation. Add text domain declaration in file header
+* Tweak - Change global $$variable to global ${$variable} for compatibility with PHP 7.0
+* Tweak - Update a3 Revolution to a3rev Software on plugins description
+* Tweak - Added Settings link to plugins description on plugins menu
+* Tweak - Updated plugins Description on wordpress.org with End of Development and Maintenance notice
+* Tweak - Removed tracking code from plugin
+* Tweak - Removed auto upgrading code from plugin
+* Tweak - Remove confirm license key form at first activate the plugin
+* Blog Notice - Read full details about the future of this plugin here https://a3rev.com/end-of-wp-e-commerce-development
+
+= 2.1.8 - 2016/04/21 =
+* Tweak - Tested for full compatibility with WP-eCommerce Version 3.11.2
+* Tweak - Tested for full compatibility with WordPress major version 4.5.0
+
+= 2.1.7 - 2015/09/08 =
+* Tweak - Tested for full compatibility with WP-eCommerce Version 3.10.1
+* Fix - Delete check new version transient when transient_timeout is deleted by WordPress 4.3 get_transients function so call to a3api for new version still works.
+
+= 2.1.6 - 2015/08/25 =
+* Tweak - Tested for full compatibility with WordPress major version 4.3.0
+* Tweak - Tested for full compatibility with WP-eCommerce major version 3.9.5
+* Tweak - include new CSSMin lib from https://github.com/tubalmartin/YUI-CSS-compressor-PHP-port into plugin framework instead of old CSSMin lib from http://code.google.com/p/cssmin/ , to avoid conflict with plugins or themes that have CSSMin lib
+* Tweak - make __construct() function for 'Compile_Less_Sass' class instead of using a method with the same name as the class for compatibility on WP 4.3 and is deprecated on PHP4
+* Tweak - change class name from 'lessc' to 'a3_lessc' so that it does not conflict with plugins or themes that have another Lessc lib
+* Tweak - Added new options into Settings -> Permalinks page on Dashboard
+* Fix - Check 'request_filesystem_credentials' function, if it does not exists then require the core php lib file from WP where it is defined
+* Fix - Change timeout of call to a3API for updates from 45 seconds to 8 seconds to resolve the server PHP timeout 30 seconds default. Server timeout before call finish was causing the 24 hour cron call not to be set and causing the dashboard to load slowly if a3API is not reachable.
+* Fix - Set 24 hours cron before call to a3API so that if have fail to connection then it will call in 24 hours on Cron instead of continue call each time Dashboard is loaded
+* Fix - validate the response from called to resolve PHP notice 'Undefined offset: 1'
+
+= 2.1.5 - 2015/06/29 =
+* Tweak - Automatic delete the house keeping option of Lite version when upgrading from Lite to Pro version. Prevents data from being deleted on upgrade if the Lite Version Clean Up On Deletion option is was left switched ON before deactivating it to install the Pro version.
+* Tweak - Tested for full compatibility with WP e-Commerce version 3.9.4
+* Fix - Added fallback cron job schedule to fix License Key deactivation bug that occurs when call to server returns null for server name when checking key status for auto Maintenance and Feature upgrades
+
+= 2.1.4 - 2015/06/03 =
+* Tweak - Tested and Tweaked for full compatibility with WordPress Version 4.2.2
+
+= 2.1.3 - 2015/05/05 =
+* Tweak - Tested for full compatibility with WordPress Version 4.2.1
+* Fix - Removed check_ajax_referer() call on frontend for compatibility with PHP caching plugins. Was returning -1 to js success call-back.
+
+= 2.1.2 - 2015/04/24 =
+* Tweak - Tested and Tweaked for full compatibility with WordPress Version 4.2.0
+* Tweak - Tested and Tweaked for full compatibility with WP e-Commerce Version 3.9.3
+* Tweak - Update style of plugin framework. Removed the [data-icon] selector to prevent conflict with other plugins that have font awesome icons
+* Fix - Changed 'p' argument name to 'psp' argument name inside legacy api url to fix conflict with WordPress 'p' Post ID argument
+* Fix - Show the new plugin version on the Core Update page. Feature stopped working with WordPress version 4.1
+
+= 2.1.1.7 - 2014/11/13 =
+* Fix - a3rev License code now recognises domain with and without the www. We believe that this will solve Licenses auto deactivating on some sites.
+
+= 2.1.1.6 - 2014/09/09 =
+* Tweak - Use $wpdb->esc_like() function instead of like_escape() function, which is deprecated on WordPress 4.0
+* Tweak - Updated google font face in plugin framework.
+* Tweak - Tested 100% compatible with WP e-Commerce 3.8.14.3
+* Tweak - Tested 100% compatible with WordPress Version 4.0
+
+= 2.1.1.5 - 2014/07/22 =
+* Fix - Moved $search_box_text into esc_js() function to stop the search breaking when default text is entered with slash characters.
+
+= 2.1.1.4 - 2014/06/23 =
+* Tweak - Added support for placeholder feature for input, email , password , text area types.
+* Tweak - Updated chosen js script to latest version 1.1.0 on the a3rev Plugin Framework
+* Tweak - Convert Lifetime License to single site purchase with add sites at discount feature. 
+* Fix - Undefined variable: extra_parameter_product message in widget 
+* Fix - Undefined variable: extra_parameter_post 
+
+= 2.1.1.3 - 2014/05/24 =
+* Tweak - Chnaged add_filter( 'gettext', array( $this, 'change_button_text' ), null, 2 ); to add_filter( 'gettext', array( $this, 'change_button_text' ), null, 3 );
+* Tweak - Update change_button_text() function from ( $original == 'Insert into Post' ) to ( is_admin() && $original === 'Insert into Post' )
+* Fix - Code tweaks to fix a3 Plugins Framework conflict with WP e-Commerce tax rates.
+
+= 2.1.1.2 - 2014/05/20 =
+* Tweak - Checked and updated for full compatibility with WP e-Commerce Version 3.8.14.1 and WordPress version 3.9.1
+* Fix - Updated preg_replace function that removes special characters from database query.
+* Credit - to Peter Scott [Web Systems Management](http://www.websysman.com/) for advising the issue and access to find and fix it.
+
+= 2.1.1.1 - 2014/04/28 =
+* Feature - Added Google Analytics Site Search integration. Use plugins default Query parameter or create your own.
+* Tweak - Added new Google Analytics tab and config settings to dashboard.
+* Tweak - Updated Framework help text font for consistency.
+* Tweak - Added remove_all_filters('mce_external_plugins'); before call to wp_editor to remove extension scripts from other plugins.
+* Tweak - Checked and updated for full compatibility with WordPress version 3.9
+
+= 2.1.1 - 2014/02/08 =
+* Feature - Special Characters Within near match. Query strings that CONTAINS a special character eg d’E return all matches found for d’e and de.
+* Feature - Special Characters Prepend and Append near match e.g. Query (Purple) will return all matches found for (Purple) and Purple.
+* Tweak - Settings admin panel Tweak. Added SEO Plugin Focus Keyword Activation setting only shows when the Predictive Search Focus Keyword Feature is ON.
+* Tweak - Updated the Focus Keyword text on Settings tab to be more descriptive and useful.
+* Tweak - Updated the Predictive Search box dropdown message ‘Keep typing ... when no results found to a more helpful dialog. 
+* Tweak - Framework load time. Added remove_all_filters('mce_external_plugins'); before call to wp_editor to remove extension scripts from other plugins.
+* Tweak - All switch text to show as Uppercase.
+* Tweak - Tested 100% compatible with WordPress version 3.8.1
+* Tweak - Tested 100% compatible with WP e-Commerce version 3.8.13.3
+* Tweak - Tested 100% compatible for query focus keywords from Yoast WordPress SEO plugin version 1.4.24.
+* Tweak - Tested 100% compatible for query focus keywords from All in One SEO Pack plugin version 2.1.3
+* Credit - Thanks to Mylene http://www.marcelbroquet.com for pointing out the Special Characters Within issue.
+* Credit - Thanks to Scott Lesh http://ledanse.com/ for pointing out the Special characters Prepend and Append issue.
+
+= 2.1.0 - 2013/12/19 =
+* Feature - a3rev Plugin Framework admin interface upgraded to 100% Compatibility with WordPress v3.8.0 with backward compatibility.
+* Feature - a3rev framework 100% mobile and tablet responsive, portrait and landscape viewing.
+* Tweak - Upgraded dashboard switch and slider to Vector based display that shows when WordPress version 3.8.0 is activated.
+* Tweak - Upgraded all plugin .jpg icons and images to Vector based display for full compatibility with new WordPress version.
+* Tweak - Tested 100% compatible with WP 3.8.0
+* Fix - Update make_compatibility function with  isset( $args->slug ) and isset( $args['body']['request'] ) so that our plugin can work together with other developers plugin (eg Backupbuddy) that adds filter on the WordPress plugins_api (bad thing to do)
+* Fix - Upgraded array_textareas type for Padding, Margin settings on the a3rev plugin framework
+
+= 2.0.9 - 2013/11/26 =
+* Feature - Upgraded the plugin to the newly developed a3rev admin Framework with app style interface.
+* Feature - New admin UI features check boxes replaced by switches.
+* Tweak - Moved admin from wp-admin Settings > Shop tabs to new menu item on wp-admin Products. Menu item name is Predictive Search.
+* Tweak - Predictive Search menu broken up into tabs - Setting, All Results Pages, Exclude Content, Search Function.
+* Tweak - Removed View Docs button from admin panels until new docs are posted. 
+
+= 2.0.8.1 - 2013/11/21 =
+* Tweak - updated search function from  wpsc_search_widget() to wpsc_search_widget() ( $ps_echo ) with $ps_echo is boolean value to allow developer to use return or the default echo parameter.
+* Tweak - Plugin tested 100% compatible with WordPress 3.7.1
+* Fix - change pipe | character to [|] character in result popup code to solve the conflict with users who use pipe | in product titles.
+* Fix - $args->slug depreciated in WordPress 3.7, replace with $request = unserialize( $args['body']['request'] ); $request->slug 
+
+= 2.0.8 - 2013/09/13 =
+* Feature - Added option to show product prices in widget, shortcode and search function drop down.
+* Credit - Thanks to George Papanikolaou (Greece) for suggesting this feature.
+* Fix - Use browser protocol http or https on page load fix in v2.1.9.1 caused sites that use Minify plugins to crash on update. Updated style url and script url to fix Minify conflict.
+* Credit - Thanks to Roy Vella (USA) for reporting the issue and the wp-admin and ftp access to his site to find and fix the bug.
+
+= 2.0.7 - 2013/09/10 =
+* Feature - Added Predictive Search Focus Keyword add / edit function to Products, Posts and Pages Quick Edit.
+* Feature - Added Hide from Predictive Search results option to Product, Posts and Pages Quick Edit.
+* Feature - Added Predictive Search Focus Keywords add / edit and hide from Search Results to Products, Posts and Pages Bulk Editor.
+* Tweak - Added 'View Docs' link from the top of each admin panel to that menus section on the plugins docs.
+* Fix - Product Thumbnail images not showing in Chrome with SSL on product pages. Stripped http// and https// protocols so browser will use the protocol that the page was loaded with. 
+* Fix - Plugins admin script and style not loading in Firefox with SSL on admin. Stripped http// and https// protocols so browser will use the protocol that the page was loaded with.
+
+= 2.0.6 - 2013/08/24 =
+* Tweak - Ran full WP_DEBUG All Uncaught exceptions errors and warnings fixed.
+* Tweak - Added PHP Public Static to functions in Class. Done so that Public Static warnings don't show in DE_BUG mode.
+* Fix - Moved position of  script jquery.autocomplete.js script in footer to load last. Done to solve conflict with any other plugin autocomplete.js script that blocks the search box dropdown.
+* Credit - Thanks to Sally Barrows for reporting the issue and the wp-admin and ftp access to her site to find and fix.
+
+= 2.0.5 - 2013/08/03 =
+* Tweak - Tested for full compatibility with WordPress v3.6.0
+* Fix - Command not saving when remove content from search exclusion. Added line command for each search type at Exclude Content Update button.  
+* Fix - Added box-sizing:content-box class attribute for compatibility with new WordPress Twenty Thirteen default theme.
+
+= 2.0.4 - 2013/06/12 =
+* Feature - Search box dropdown now can show the full wide when search function is activated by a third party script. An example of this is when the search box is not loaded on page load but is activated by click on a button or element.
+* Tweak - Moved autocomplete js from load in the header to enqueued in the footer.
+* Tweak - Changed the search box drop down z index to 999999 so that it always overlays any other element on the page.
+
+= 2.0.3 - 2013/06/08 =
+* Feature - Added House keeping function to settings. Clean up on Deletion.  Option - Choose if you ever delete this plugin it will completely remove all tables and data it created, leaving no trace it was ever here.
+* Tweak - Updated plugins support forum link to the plugins a3rev support forum.
+
+= 2.0.2 - 2013/04/26 =
+* Feature - Added option to show SKU under product title on Product Name All Results Search pages.
+* Feature - Further reduction in search function memory use achieved by tweaking the output buffering function. Particularly useful for those with servers running low on or operating on low memory resources.
+
+= 2.0.1 - 2013/04/22 =
+* Tweak - Updated all plugin code to be 100% compatible with the new WP e-Commerce version 3.8.10. The plugin is backward compatible with older version to 3.8.5
+
+= 2.0 - 2013/04/20 =
+* Feature - Newly developed mysql command that makes the Predictive Search Engine results 100% accurate, 100% of the time. Install this upgrade and try it out for yourself - you will be absolutely amazed, excited, over the moon like we are about it.
+* Feature - Added Predictive Search 'Focus keywords'. As a solution for all the people who have requested all the different things they want Predictive Search to return results for and from. Now you can 100% accurately Optimize your entire site anyway you want with WP e-Commerce Predictive Search 'Focus Keywords' and Optimize your 'site search' by adding a 'Focus Keywords or Keyword Phrases' to any product page, post, wp-page just like an SEO plugin except it is for site search not external search engines and its 100% accurate and super fast.
+* Feature - Added a new Predictive Search meta section on each product page, post and page for setting 'Focus Keywords and Keyword Phrases'.
+* Feature - Integration with SEO plugins. Can be a massive time saver. Configure your plugin with the click of a mouse to use Focus Keywords that are set on an SEO plugin you are using. Added the ability for to also include any 'Focus Keywords' that have been set while optimizing the site content for search engine search.  
+* Feature - Currently supports * Yoasts WordPress SEO and the * All in One SEO plugins. We have built this feature so we can add any SEO plugin that uses 'Focus Keywords'. If you use another WordPress SEO Plugin and would like to see it included in the list of supported plugins please just let us know and we will look in including support for it in future updates.
+* Feature - Added Pretty URL' support to replace the All Search Results pages parameter driven URLS
+* Feature - Added the ability to add text content that shows inside the Search box. Added as a Global setting or can be individually set on Widgets, Shortcode or the Search Function
+* Feature - All Results search page shortcode now shows as an image in the Search results page Visual text editor instead of the shortcode [ecommerce_search]. We have used an image to overcome some confusion about if the shortcode was a3rev Predictive Search or a WP e-Commerce shortcode function. Also has instructions (in English) about moving the shortcode to another page. After you upgrade, take a look.
+* Feature - Exclude any product, post or page from Predictive Search results right from the Predictive Search Meta. Also see if it is currently excluded from search results, make it visible from the meta box.
+* Feature - Major UI upgrade. We have completely rewritten the plugins admin panel and the Predictive Search tab on the WP e-Commerce > Store settings. Content is now broken into sub nav tabs for ease of use. The tabs are  Predictive Search | All Results Search Pages | Exclude Content | Search Function, with styling to be added in the next feature upgrade.
+* Feature - Added a new Chosen styling lib for drop-downs and Options. This was important because it now makes excluding content a very easy thing to do for each content search taxonomy.
+* Feature - Added when install and activate plugin link redirects to License Key validation page instead of the wp-plugins dashboard.
+* Tweak - Updated admin error message that displays when plugin cannot connect to a3API on the Amazon cloud upon activation of the license.
+* Tweak - Jumped version from 1.1.5 to 2.0 in line with this major rework and feature upgrade.
+* Tweak - Updated plugin wiki docs to include new features and admin dashboard layout features.
+* Fix - Sort Search Results Pages show 'No Results' - The way the plugin was configured when a user hit 'Enter' while searching all of the Search Results pages where displayed for Sorting - Sort by Product Name | SKU | Product Categories | Product Tags | Posts | Pages - All of the Tabs showed even if a page had 'No Results'. This was done to save on database queries. We have written a special script and added it is fired when the user clicks 'Enter' while searching - it checks each page for results - if it finds 'No Results' it hides the Page tab and if it finds results if does nothing, when it is finished doing the 6 queries it goes back to sleep. The result is only 6 extra queries being done and super fast and only shows pages that have results.
+* Fix - Made new ajax filters to stop plugins like Role Scoper filtering predictive search functions.
+* Fix - Posts that do not have any meta data not showing in search results.
+* Fix - Don't show [shortcodes] in search results descriptions.
+* Fix - Updated all Javascript functions so that the plugin is compatible with jQuery Version1.9 and backwards to version 1.6. WordPress still uses jQuery version 1.8.3. In themes that use Google js Library instead of the WordPress jQuery then there was trouble because Google uses the latest jQuery version 1.9. There are a number of functions in jQuery Version 1.9 that have been depreciated and hence this was causing errors with the jQuery function in the plugin.
+* Fix - Link from search box drop down footer to All Results Search pages not working in Internet Explorer 8, 9 and 10.
+* Fix - All Results pages returning a 404 page not found when custom permalinks set with a trailing slash. When a sites custom permalinks where set with a trailing slash this caused an extra / in the Results Search pages URL resulting in a 404. The plugin now checks if the trailing slash is present and allows for that to produce the correct URL. 
+* Fix - Bug for users who have https: (SSL) on their sites wp-admin but have http on sites front end. This was causing search results to show a -1 in the drop down instead of the results because wp-admin with SSL applied only allows https:, but the url of admin-ajax.php is http: and it is denied hence returning the ajax -1 error. Fixed by writing a filter to recognize when https is configured on wp-admin and parsing correctly. If you do not have this configuration nothing changes for you, if you do have https on your wp-admin (or install it in the future) and http on the front end then Predictive Search now automatically detects that and works as it should.
+* Fix - Search function and shortcodes not working on themes that call the wpautop function before the shortcode function (very poor practice). The wpautop function auto adds the <p> tag to all white space in php functions and thus breaks our function. We use internal script rather than a js file for the search function and shortcodes because a js file is always called on each page load even when it is not required. We have removed all white spaces and problem no longer exists.
+* Fix - Undefined variable mediumSRC notice showing in search box dropdown when product does not have a featured image.We fixed by defining the variable.
+* Fix - Full WP_DEG run. All Uncaught exceptions fixed.
+
+= 1.1.5 - 2012/12/31 =
+* Tweak - Updated plugin API to allow Pro Version License holders to manage their Licenses from the all new "My Account" dashboard on a3rev. Includes the option to see which domains each plugin is installed and activated on and the ability to deactivate the plugin on any domain from the 'My Account' > Manage Licenses dashboard.
+
+= 1.1.4 - 2012/12/18 =
+* Tweak - Added get Product Name results character description from Products 'Additional Description' if no content is entered for Product description.
+* Fix - Plugin now supports themes that use post_type array rather than post_type string. If the theme post_type is array plugin will now use function is_array() and in_array() instead of trim() function to generate the All Search Results pages. 
+* Credit - Thanks to Dietmar Hohn of Germany for working with us on this quirky bug fix.
+
+= 1.1.3 - 2012/11/29 =
+* Feature: Now supports WPMU - Pro Version Single License now works on any domain or sub domain that the Plugin is installed on with the WPMU environment.  
+* Tweak - Change Pro Version plugin API call from cURL to now use WordPress auto update wp_remote_request function. This is to fix Pro License user who do not have cURL activated on their host not being able to install and activate the plugin.
+* Tweak - Built new Amazon EC2 plugin API to increase connection and download speed as well as reliability and uptime - plugin from this version calls to the new API.
+* Fix - Fixed conflict with WordPress Domain Mapping plugin - thanks to Johannes for access to his WPMU install to find and fix this issue.
+* Fix - Change Pro Version plugin API call so that it only calls from the WP-Plugins page and not from every admin page.
+* Fix - Changed Pro Version plugin API call so that if it calls once to the API and it does not connect it auto aborts instead of keeping on trying to call.
+
+= 1.1.2 - 2012/11/27 =
+* Fix - XSS Vulnerabilities. Added strip tags function to stop XSS injections by adding script via the predictive search box. Thanks to Jason Flemming for alerting us to this issue.
+
+= 1.1.1 - 2012/11/22 =
+* Feature - Upgraded Search function feature to allow for easier application of the search function to theme headers. Go to the Settings > Store > Predictive Search and you will see that you can now add and update the function search values on that page. Once values are added and the page updated you add the global function to you header.php file.
+* Feature -  For themes that require knowledge of HTML and PHP to position and style the Predictive Search function we have introduced a USD$12 'on demand' service for those who don't have that coding ability and access to a coder who does - see here http://a3rev.com/products-page/custom-coding/add-predictive-search-function/
+* Feature - Add 'Exclude From Predictive Search' Functionality. From the Settings > Store > Predictive Search tab you can now exclude any Product, Product Category, Product tag, Post or Page from showing in the Predictive Search results.
+
+= 1.1.0 - 2012/09/21 =
+* Feature - Added Predictive Search for Product Categories from widget.
+* Feature - Added Predictive Search for Product Tags from widget.
+* Feature - Added Predictive Search for Posts from widget.
+* Feature - Added Predictive Search for Pages from widget.
+* Feature - Added the ability to sorting the 5 search types in Predictive Search widget
+* Feature - Added 'All Search Pages' types. Creates a page for each search type.
+* Feature - Apply Smart Search feature for Posts when on Categories or Tags page of post type
+* Tweak - Added support for new parameters when manually adding Predictive Search function to theme.
+* Tweak - Automated the All Results Search page endless scroll feature. No longer have to click the bar to see more results.
+* Tweak - Changed sort text from Sort Search Results to Sort Search Results by
+* Tweak - Changed text that show at top of the all results search page to highlight the results being currently viewed e.g. "Viewing all Product Category search results for your search query socks
+* Tweak - Change text on drop down widget footer from "See all results for (Search term)" to "See more search results for (Search term) in:" to clarify that there are more results available by clicking on the name of search 'Type" that shows below it (eg Product categories - linked to All Search results pages)
+* Tweak - Added Plugin Documents to the a3rev wiki.
+* Tweak - Add plugin Documentation and Support links to the wp plugins dashboard description.
+* Fixed : Updated depreciated php function ereg() with stristr() so that auto plugin auto upgrade feature work without error for WordPress 3.4.0 and later
+* Fixed: Shortcode relative horizontal placement in page and post content. 
+* Fixed: Shortcode text wrap left and right around the search box.
+
+= 1.0.2 - 2012/08/17 =
+* Fix - Fixed styling for sidebar widget search box so it shows correctly.
+* Tweak - Change localization file path from actual to base path
+* Tweak - Added checkbox to select 'Smart Search' in sidebar widget
+* Tweak - Added Support and Documentation links to plugins description.
+* Documentation - Added comprehensive extension documentation to the [a3rev wiki](http://docs.a3rev.com/user-guides/wp-e-commerce/wpec-predictive-search/)
+
+= 1.0.1 - 2012/08/03 =
+* Fix - Show the 6 results with 100 characters of product description by default when no value is present Ã‚ in Widget control and Admin panel
+* Fix - Change z-index for search box from 1001 to 99 so that themes nav bar dropdowns slide over it instead of behind the search box
+* Feature - Hide the description when enter 0 as the number of description characters in the sidebar widget and Admin panel.
+* Feature - Show first thumb image in product gallery if the product does not have feature image.
+
+= 1.0 - 2012/07/30 =
+* Initial release.
